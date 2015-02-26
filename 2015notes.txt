@@ -1,0 +1,33 @@
+%=======================================================%
+\begin{frame}
+\frametitle{Structure of a Shiny App}
+\begin{itemize}
+\item Every Shiny app has the same structure: two R scripts saved together in a directory. At a minimum, a Shiny app has ui.R and server.R files.
+
+\item You can create a Shiny app by making a new directory and saving a ui.R and server.R file inside it. Each app will need its own unique directory.
+\end{itemize}
+\end{frame}
+%=======================================================%
+\begin{frame}
+\frametitle{Running an App}
+You can run a Shiny app by giving the name of its directory to the function \texttt{runApp()}. 
+For example if your Shiny app is in a directory called \texttt{myApp}, run it with the following code:
+\begin{framed}
+\begin{verbatim}
+> library(shiny)
+> runApp("myApp")
+\end{verbatim}
+\end{framed}
+\end{frame}
+%=======================================================%
+\begin{frame}
+\frametitle{Running an App}
+\begin{itemize}
+\item Note: runApp is similar to read.csv, read.table, and many other functions in R. 
+\item The first argument of runApp is the filepath from your working directory to the app’s directory. 
+\item The code above assumes that the app directory is in your working directory. 
+\item In this case, the filepath is just the name of the directory.
+\item 
+(In case you are wondering, the Hello Shiny app’s files are saved in a special system directory called "01_hello". This directory is designed to work with the runExample ("01_hello") call.)
+\end{itemize}
+%==================================================================%
