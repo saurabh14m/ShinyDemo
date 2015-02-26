@@ -1,0 +1,47 @@
+\documentclass[a4paper,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{eurosym}
+\usepackage{vmargin}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{fancyhdr}
+%\usepackage{listings}
+\usepackage{framed}
+\usepackage{graphicx}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2570}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{LastRevised=Wednesday, February 23, 2011 13:24:34}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{Language=American English}
+
+\pagestyle{fancy}
+\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
+\lhead{Shiny} \rhead{Dublin \texttt{R}}
+\chead{Working Directories}
+%\input{tcilatex}
+\begin{document}
+
+\subsection*{Finding out the Current Working Directory}
+To find out the current \textit{\textbf{Working Directory}}, we use the \texttt{ getwd()} command
+\begin{framed}
+\begin{verbatim}
+getwd()
+# [1] "C:/Users/Computer5/Documents/R"
+\end{verbatim}
+\end{framed}
+%------------------------------------------------------- %
+\subsection*{Changing out the Current Working Directory}
+
+\begin{itemize}
+\item At the top of RStudio, click on the \texttt{Session} menu
+\item Click on \textbf{\textit{Set Working Directory}}
+\item On the Submenu that appears, click on \textbf{\textit{Choose Working Directory}}.
+\item Select the working directory you have crated for this workshop.
+\end{itemize}
+
+\end{document}

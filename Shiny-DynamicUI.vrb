@@ -1,0 +1,19 @@
+\textbf{ui.R- Partial example}
+\begin{framed}
+\begin{verbatim}
+# Partial example
+numericInput("lat", "Latitude"),
+numericInput("long", "Longitude"),
+uiOutput("cityControls")
+\end{verbatim}
+\end{framed}
+\textbf{server.R - Partial example}
+\begin{framed}
+\begin{verbatim}
+output$cityControls <- renderUI({
+  cities <- getNearestCities(input$lat, input$long)
+  checkboxGroupInput("cities", "Choose Cities",
+  cities)
+})
+\end{verbatim}
+\end{framed}

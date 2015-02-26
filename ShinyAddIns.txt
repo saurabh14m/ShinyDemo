@@ -1,0 +1,51 @@
+
+
+%---------------------------------------------%
+\begin{frame}
+\frametitle{Uploading CSV filesData}
+
+CSV files can be uploaded into the application
+folder.
+The \texttt{server.R} file contains the code for data cleaning and management 
+at the top, before the reactive code segments.
+
+
+\begin{framed}
+\begin{verbatim}
+library(shiny)
+library(ggplot2)
+
+# load the data- keeping strings as strings
+
+MyData <- read.csv("MyData.csv", stringsAsFactors = FALSE)
+
+\end{verbatim}
+\end{framed}
+\end{frame}
+%---------------------------------------------%
+
+%---------------------------------------------%
+\begin{frame}
+\frametitle{JavaScript and Shiny}
+\begin{itemize}
+\item With Shiny, JavaScript, and jQuery, you can build pretty much anything you
+can think of; moreover, Shiny and jQuery will do a lot of the heavy lifting which
+means fairly minimal amounts of code will be required. We are going to have a
+look at another couple of toy examples. 
+\item Firstly, we will look at using JavaScript to
+manipulate the inputs of a Shiny application, and then at using jQuery to manipulate
+the outputs.
+\end{itemize}
+\end{frame} 
+%---------------------------------------------%
+\begin{frame}
+\frametitle{JavaScript and Shiny}
+\begin{itemize}
+\item Please note that these examples do not represent the best practice in
+coding as they do not make the best use of CSS, HTML, or jQuery. They are just there
+to demonstrate the principles and show you how easy it is. In your own applications,
+you will need to make use of HTML, JavaScript (and/or jQuery), and CSS in the
+most appropriate and efficient way.
+\end{itemize}
+\end{frame}
+%---------------------------------------------%

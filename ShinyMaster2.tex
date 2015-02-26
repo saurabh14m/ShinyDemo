@@ -1,0 +1,167 @@
+\documentclass{beamer}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{framed}
+
+\begin{document}
+\section{Part 2}
+%---------------------------------------------------- %
+\begin{frame}
+\frametitle{Shiny - Part 2}
+\Large
+\textbf{Main Components of a Shiny Web App} 
+\begin{itemize}
+\item The shiny app is structurally a folder. The name of the app is the name of the folder.
+\item  Shiny programs are the easiest to build and
+understand using two scripts, which are kept within this folder. They must be
+named \texttt{server.R} and \texttt{ui.R}.
+\item 
+The input elements are defined in
+\texttt{ui.R} and processed by \texttt{server.R}, which then sends them back to \texttt{ui.R}
+\item Consideration: \textbf{\textit{Reactive Programming}}
+\end{itemize}
+
+
+\end{frame}
+
+%-----------------------------------------------%
+\begin{frame}
+\frametitle{Shiny Basics}
+\Large
+\vspace{-0.5cm}
+\textbf{Basic structure of a Shiny program}
+\begin{itemize}
+\item  Selection of simple input widgets (checkboxes and radio buttons)
+\item  Selection of simple output types (rendering plots and returning text)
+\item  Selection of simple layout types (page with sidebar and tabbed output panel)
+\item  Handling reactivity in Shiny
+\end{itemize}
+\end{frame}
+
+%-----------------------------------------------%
+\begin{frame}[fragile]
+\frametitle{Running a Shiny App}
+\Large
+To run a Shiny program on your local machine you just need to do the following:
+\begin{enumerate}
+\item  Make sure that \texttt{server.R} and \texttt{ui.R} are in the application subfolder (\texttt{appName}).
+\item Make the main folder \texttt{R}'s working directory (using the \texttt{setwd()} command, for
+example \texttt{setwd("~/shinyFiles")}).
+\begin{verbatim}
+>...\shinyFiles\appName
+\end{verbatim}
+\item Load the Shiny package (\texttt{library(shiny})). You
+should always do that in both \texttt{server.R} and \texttt{ui.R} files.
+\end{enumerate}
+
+
+\end{frame}
+%-----------------------------------------------%
+\begin{frame}
+\frametitle{runApp}
+\Large
+\vspace{-1.5cm}
+\begin{itemize}
+\item Type \texttt{runApp("appName")} at the console.
+%\item runApp() with the name of a directory within works just as well, for example,runApp("~/shinyFiles/minimalExample").
+\item If you are in the application folder, just type \texttt{runApp()}
+\item \textbf{Important} - Just remember that it is a directory
+and not a file that you need to point to.
+\end{itemize}
+\end{frame}
+%-----------------------------------------------%
+\begin{frame}
+\frametitle{ui.R}
+\Large
+\begin{itemize}
+\item The \texttt{ui.R} file is a description of the UI and is often the shortest and simplest part of
+a Shiny application. \item All of the UI elements are defined
+within this instruction.
+\item The standard shiny layout is a three panel layout, with a header panel, a sidepanel 
+controls on the left, and the main panel on the right - with the output.
+\item This layout is called \textbf{\emph{pageWithSidebar}}. There are other layouts too - such as basicPage and threePage.
+\end{itemize}
+
+\end{frame}
+%-----------------------------------------------%
+\begin{frame}
+\Large
+%-----------------------------------------------%
+\frametitle{Inputs}
+The arguments are pretty typical among most of the widgets and are
+as follows:
+\begin{description}
+\item[ inputId]: This argument names the variable so it can be referred to in the
+\texttt{server.R} file
+\item[ label]: This argument gives a label to attach to the input so users know
+what it does
+\item[value]: This argument gives the initial value to the widget when it is
+set up. All the widgets should have sensible defaults for this argument.
+\end{description}
+\end{frame}
+%-----------------------------------------------%
+
+%-----------------------------------------------%
+\begin{frame}
+\frametitle{Main Panel}
+\Large
+\vspace{-1cm}
+\begin{itemize}
+\item The final function is \texttt{mainPanel()}, which sets up the output window. 
+\item  HTML helper functions - make a little title \texttt{h3("...")}. Knowledge of HTML is very useful!
+\item There are several of these functions designed to generate HTML to go straight on
+the page; \\e.g. type \texttt{?p} at the console for the complete list. 
+\end{itemize}
+\end{frame}
+%-----------------------------------------------%
+%-----------------------------------------------%
+\begin{frame}
+\Large
+\frametitle{Main Panel}
+\begin{itemize}
+\item The other element that goes in
+\texttt{mainPanel()} is an area for handling reactive text or plots generated within the\texttt{ server.R}
+file
+\item For example - a call to \texttt{textOutput()} with the name of the output as defined in
+\texttt{server.R}, in the upcoming "minimal case" examples.
+% "textDisplay".
+\end{itemize}
+\end{frame}
+%-----------------------------------------------%
+\begin{frame}
+%-----------------------------------------------%
+\frametitle{server.R}
+\Large
+
+\begin{itemize}
+\item \texttt{shinyServer(...{...})} defines the bit of Shiny that's
+going to handle all the data. 
+\item On the whole, two types of things go in here. \item \textbf{Reactive
+objects} (for example, data) are defined, which are then passed around as needed (for
+example, to different output instructions), \item Outputs are defined, such as graphs.
+\end{itemize}
+\end{frame}
+%-----------------------------------------------%
+
+%----------------------------------------------------- %
+\section{Ractive Programming}
+\begin{frame}[fragile]
+\Large
+\frametitle{Reactive Programming}
+
+Simple \texttt{R} example re: reactivity
+\begin{framed}
+\begin{verbatim}
+> A <- 5
+> B <- A + 3
+> A <-6         #Update A
+>
+> c(A,B,A+3)
+[1] 6 8 9
+>
+\end{verbatim}
+\end{framed}
+Comapre this with Microsoft Excel Spreadsheets
+\end{frame}
+\end{document}

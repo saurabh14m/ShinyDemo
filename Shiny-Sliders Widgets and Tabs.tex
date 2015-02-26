@@ -1,0 +1,91 @@
+\documentclass{beamer}
+
+\usepackage{amsmath}
+\usepackage{framed}
+\usepackage{amssymb}
+
+\begin{document}
+%------------------------------------- %
+\begin{frame}
+\frametitle{Sliders Widgets and Tabs}
+Customizing Sliders
+Shiny slider controls are extremely capable and customizable. Features supported include:
+
+The ability to input both single values and ranges
+Custom formats for value display (e.g for currency)
+The ability to animate the slider across a range of values
+Slider controls are created by calling the sliderInput function. The ui.R file demonstrates using sliders with a variety of options:
+\end{frame}
+%------------------------------------- %
+%------------------------------------- %
+\begin{frame}
+\frametitle{Sliders}
+Server Script
+The server side of the Slider application is very straightforward: it creates a data frame containing all of the input values and then renders it as an HTML table:
+\end{frame}
+%------------------------------------- %
+%------------------------------------- %
+\begin{frame}[fragile]
+\frametitle{Widgets}
+ex10
+\begin{verbatim}
+ sidebarPanel(
+    selectInput("dataset", "Choose a dataset:", 
+                choices = c("rock", "pressure", "cars")),
+
+    numericInput("obs", "Number of observations to view:", 10),
+
+    helpText("Note: while the data view will show only the specified",
+             "number of observations, the summary will still be based",
+             "on the full dataset."),
+
+    submitButton("Update View")
+  )
+\end{verbatim}
+\end{frame}
+%------------------------------------- %
+%------------------------------------- %
+\begin{frame}
+\frametitle{Widgets}
+
+\end{frame}
+%------------------------------------- %
+%------------------------------------- %
+\begin{frame}
+\frametitle{Tab Panels}
+
+Tabsets are created by calling the tabsetPanel function with a list of tabs created by the tabPanel function. Each tab panel is provided a list of output elements which are rendered vertically within the tab.
+
+In this example we updated our Hello Shiny application to add a summary and table view of the data, each rendered on their own tab. Here is the revised source code for the user-interface:
+\end{frame}
+%------------------------------------- %
+%------------------------------------- %
+\begin{frame}[fragile]
+\frametitle{Widgets}
+ex11
+\begin{framed}
+\begin{verbatim}
+mainPanel(
+    tabsetPanel(
+      tabPanel("Plot", plotOutput("plot")), 
+      tabPanel("Summary", verbatimTextOutput("summary")), 
+      tabPanel("Table", tableOutput("table"))
+    )
+  )
+\end{verbatim}
+\end{framed}
+\end{frame}
+%------------------------------------- %
+%------------------------------------- %
+\begin{frame}
+\frametitle{Tabs}
+
+\end{frame}
+%------------------------------------- %
+%------------------------------------- %
+\begin{frame}
+\frametitle{Tabs}
+
+\end{frame}
+%------------------------------------- %
+\end{document}

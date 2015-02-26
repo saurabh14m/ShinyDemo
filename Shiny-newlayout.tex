@@ -1,0 +1,78 @@
+
+\documentclass[a4paper,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{eurosym}
+\usepackage{vmargin}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{fancyhdr}
+%\usepackage{listings}
+\usepackage{framed}
+\usepackage{graphicx}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2570}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{LastRevised=Wednesday, February 23, 2011 13:24:34}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{Language=American English}
+
+\pagestyle{fancy}
+\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
+\lhead{Shiny} \rhead{Dublin \texttt{R}}
+\chead{Reactivity}
+%\input{tcilatex}
+\begin{document}
+
+\subsection*{Layout}
+
+\begin{itemize}
+\item To create a display with a fluid, unbroken layout, Shiny \texttt{ui.R} scripts need the function \texttt{fluidPage}. Shiny knows where to put your app’s elements when it reads them in the \texttt{fluidPage} function.
+
+\item The following \texttt{ui.R} script creates a user-interface that has a title panel, a sidebar panel, and a main panel. Note that these elements are placed within the fluidPage function.
+
+\begin{framed}
+\begin{verbatim}
+# ui.R
+
+shinyUI(fluidPage(
+  titlePanel("title panel"),
+
+  sidebarLayout(
+    sidebarPanel( "sidebar panel"),
+    mainPanel("main panel")
+  )
+))
+\end{verbatim}
+\end{framed}
+
+
+\item \texttt{titlePanel} and \texttt{sidebarLayout} are the two most popular elements to add to \texttt{fluidPage}. They create a basic Shiny app with a sidebar.
+
+\subitem \texttt{sidebarLayout} always takes two arguments:
+\subitem \texttt{sidebarPanel} function output
+\subitem \texttt{mainPanel }function output
+
+\item These functions place content in either the sidebar or the main panels.
+\item 
+By default the sidebar appears on the left side of your app’s display. To move the sidebar to the right, in \texttt{sidebarLayout} set position to “right.”
+\end{itemize}
+\begin{framed}
+\begin{verbatim}
+# ui.R
+
+shinyUI(fluidPage(
+  titlePanel("title panel"),
+
+  sidebarLayout(position = "right",   #<- HERE
+    sidebarPanel( "sidebar panel"),
+    mainPanel("main panel")
+  )
+))
+\end{verbatim}
+\end{framed}
+
+\end{document}

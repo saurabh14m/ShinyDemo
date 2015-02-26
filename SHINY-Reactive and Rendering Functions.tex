@@ -1,0 +1,132 @@
+
+\documentclass[a4paper,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{eurosym}
+\usepackage{vmargin}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{fancyhdr}
+%\usepackage{listings}
+\usepackage{framed}
+\usepackage{graphicx}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2570}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{LastRevised=Wednesday, February 23, 2011 13:24:34}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{Language=American English}
+
+\pagestyle{fancy}
+\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
+\lhead{Shiny} \rhead{Dublin \texttt{R}}
+\chead{Reactive and Rendering Functions}
+%\input{tcilatex}
+\begin{document}
+
+\subsection*{Reactive Functions}
+\begin{center}
+\begin{tabular}{|c|l|}
+\hline  Output function	& creates  \\ \hline  \hline
+
+\texttt{htmlOutput}	& raw HTML \\ \hline
+\texttt{imageOutput}	& image \\ \hline
+\texttt{plotOutput}	& plot \\ \hline
+\texttt{tableOutput}	& table \\ \hline
+\texttt{textOutput}	& text \\ \hline
+\texttt{uiOutput}	& raw HTML \\ \hline
+\texttt{verbatimTextOutput}	& text \\ \hline
+\end{tabular} 
+\end{center}
+
+% REACTIVE OUTPUT
+
+
+
+
+
+%-----------------------------------------------------------------------%
+\subsection*{Rendering Functions}
+
+\begin{center}
+\begin{tabular}{|c|l|}
+\hline
+render function	& creates  \\ \hline  \hline
+\texttt{renderImage}	& images (saved as a link to a source file)  \\ \hline 
+\texttt{renderPlot}	& plots \\ \hline 
+\texttt{renderPrint}	& any printed output \\ \hline 
+\texttt{renderTable}	& data frame, matrix, other table like structures \\ \hline 
+\texttt{renderText}	& character strings \\ \hline 
+\texttt{renderUI}	& a Shiny tag object or HTML \\ \hline 
+\end{tabular} 
+\end{center}
+
+%-----------------------------------------------------------------------%
+\subsection*{Rendering Functions - Examples}
+\begin{itemize}
+\item \texttt{renderPlot} - Renders a reactive plot that is suitable for assigning to an output slot. 
+\texttt{expr} is an expression that generates a plot.
+
+\begin{framed}
+\begin{verbatim}
+renderPlot(expr, width = "auto", height = "auto",.....)
+\end{verbatim}
+\end{framed}
+
+
+\item \texttt{renderTable} - Creates a reactive table that is suitable for assigning to an output slot.
+
+
+\begin{framed}
+\begin{verbatim}
+renderTable(expr, ..., ......)
+\end{verbatim}
+\end{framed}
+
+\end{itemize}
+
+\newpage
+%-----------------------------------------------------------------------%
+\subsection*{Communicating between Functions}
+\begin{itemize}
+\item Output from s\texttt{erver.R} passed a list like object.
+\item Reactive Components of \texttt{ui.R} use this output
+\end{itemize}
+
+
+\textbf{ui.R}
+\begin{framed}
+\begin{verbatim}
+shinyUI(fluidPage(
+  titlePanel("censusVis"),
+....
+    mainPanel(
+      textOutput("text1")
+    )
+  )
+))
+....
+\end{verbatim}
+\end{framed}
+\textbf{server.R}
+\begin{framed}
+\begin{verbatim}
+....
+shinyServer(
+  function(input, output) {
+  
+    output$text1 <- renderText({ 
+      paste("You have selected", input$var)
+    })
+    
+  }
+)
+....
+\end{verbatim}
+\end{framed}
+
+
+\end{document}

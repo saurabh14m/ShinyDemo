@@ -2,13 +2,15 @@ ex1 : Hello Shiny
 ex2 : Chris Beeleys Minimal Example
 ex3 : Not Working Yet
 ex4 : Geyser Eruption Example
-ex5 : When is a Fair Coin Fair? (Needs eeptools)
-ex6 : Normality Slider
+ex5 : When is a Fair Coin Fair? (By JDKnowles - Needs eeptools)  (runGist(4484930))
+
+ex6 : Normality Slider (By JDKnowles - Needs eeptools)  (runGist(4484868)) 
 ex7 : Kevin O'Brien Minimal Example
 ex8 : Kevin O'Brien Dice Example
 ex9 : Kevin O'Brien Minimal Example 2
 ex11: The iris data set (simple enough)
 ex12: Winston Changes JSQuery Demo - needs a lot of packages to be installed
+ex15: Dynamic Number of Plots
 ex21: MTCARS boxplots example
 ex22: Chris Beeley's Widgets
 ex23: Not Working Yet

@@ -1,0 +1,130 @@
+
+\documentclass[a4paper,12pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{eurosym}
+\usepackage{vmargin}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{fancyhdr}
+%\usepackage{listings}
+\usepackage{framed}
+\usepackage{graphicx}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.00.0.2570}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{LastRevised=Wednesday, February 23, 2011 13:24:34}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{Language=American English}
+
+\pagestyle{fancy}
+\setmarginsrb{20mm}{0mm}{20mm}{25mm}{12mm}{11mm}{0mm}{11mm}
+\lhead{Shiny} \rhead{Dublin \texttt{R}}
+\chead{Reactive and Rendering Functions}
+%\input{tcilatex}
+\begin{document}
+
+\subsection*{Basics of Shiny}
+
+\begin{itemize}
+
+\item To create an shiny app, create a subfolder with the name of the shiy app in your working directory (\texttt{Appname}).
+
+\item There are two components (i.e. script files) of a shiny app.
+
+\item These are called (and must be called) \texttt{ui.R} and
+ \texttt{server.R}. 
+Also they must be also in the same subfolder.
+
+\item Input elements are defined in \texttt{ui.R}  and processed by \texttt{server.R}, which sends to \texttt{ui.R}.
+
+\item When the Shiny Package is ready, you simply type \texttt{runApp("Appname")}.
+
+% Make sure the working directory is the same folder.
+\end{itemize}
+
+%-----------------------------------------------------------------------%
+\subsection*{ui.R for a minimal example}
+\begin{framed}
+\begin{verbatim}
+
+library(shiny)
+
+#OLD LAYOUT - REPLACING WITH "fluidpage"
+
+shinyUI(pageWithSidebar(
+
+.......
+
+
+)
+\end{verbatim}
+\end{framed}
+%-----------------------------%
+\subsection*{Components of this layout}
+\begin{itemize}
+\item \texttt{sidebarPanel()}
+\item \texttt{headerPanel()}
+\item \texttt{mainPanel()}
+\end{itemize}
+
+%-----------------------------------------------------------------------%
+
+\begin{framed}
+\begin{verbatim}
+
+library(shiny)
+
+shinyUI(pageWithSidebar(
+
+headerPanel(........),
+sidebarPanel(........),
+mainPanel(.........)
+
+)
+\end{verbatim}
+\end{framed}
+
+%-----------------------------------------------------------------------%
+\subsection*{Tabbed Panels}
+\begin{framed}
+\begin{verbatim}
+
+.........
+mainPanel(
+  tabsetPanel(
+     tabPanel(..........),
+     tabPanel(..........),
+     tabPanel(..........)
+  )
+)
+........
+\end{verbatim}
+\end{framed}
+
+\newpage
+%-----------------------------%
+\subsection*{server.R for a minimal example}
+
+%\begin{itemize}
+%\item \texttt{shinyServer(....\{...\})}}
+% defines the shiny server
+%\end{itemize}
+
+\begin{framed}
+\begin{verbatim}
+
+library(shiny)
+
+shinyServer(function(input,output){
+
+.......
+
+
+})
+\end{verbatim}
+\end{framed}
+\end{document}

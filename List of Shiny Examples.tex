@@ -1,0 +1,107 @@
+\documentclass[12pt]{article}
+
+\usepackage{framed}
+
+\begin{document}
+\section{List of Shiny Examples}
+This is a collection of Shiny examples. 
+
+\begin{itemize}
+\item To run the examples locally, you can install the shiny package in R, and use the function runGithub(). For example, to run the example 001-hello:
+
+\begin{verbatim}
+if (!require('shiny')) install.packages("shiny")
+shiny::runGitHub("shiny-examples", "rstudio", subdir = "001-hello")
+\end{verbatim}
+Or you can clone or download this repository, and use run 
+\begin{verbatim}
+shiny::runApp("001-hello").
+\end{verbatim}
+\item 
+You can see them in action on \textit{http://demo.shinyapps.io/example-name} where \textit{example-name} is the directory name of an example here, e.g. \textit{http://demo.shinyapps.io/001-hello}
+\end{itemize}
+
+%---------------------------------------------------------%
+
+\subsection{\texttt{EX01} - Hello World Example }
+This small Shiny application demonstrates \texttt{Shiny}'s automatic UI updates. Move the Number of bins slider and notice how the \texttt{renderPlot} expression is automatically re-evaluated when its dependant, \texttt{input\$bins}, changes, causing a histogram with a new number of bins to be rendered.
+%-------------------------------------------------------------%
+\subsection{\texttt{EX02} - Text Example}
+This example demonstrates output of raw text from \texttt{R} using the \texttt{renderPrint} function in \texttt{server.R} and the \texttt{verbatimTextOutput }function in \texttt{ui.R}. 
+
+\noindent In this case, a textual summary of the data is shown using \texttt{R}'s built-in summary function.
+%-------------------------------------------------------------%
+\subsection{\texttt{EX03} - Reactivity}
+This example demonstrates a core feature of Shiny: \textbf{reactivity}. In \texttt{server.R}, a reactive called \texttt{datasetInput} is declared.
+\newline
+
+\noindent Notice that the reactive expression depends on the input expression \texttt{input\$dataset}, and that it's used by both the output expression \texttt{output\$summary} and \texttt{output\$view}. 
+\newline
+
+\noindent Try changing the dataset (using \textit{Choose a dataset}) while looking at the reactive and then at the outputs; you will see first the reactive and then its dependencies flash.
+\newline
+
+\noindent Notice also that the reactive expression doesn't just update whenever anything changes--only the inputs it depends on will trigger an update. Change the "Caption" field and notice how only the \texttt{output\$caption} expression is re-evaluated; the reactive and its dependents are left alone.
+\newpage
+%-------------------------------------------------------------%
+\subsection{\texttt{EX04} - mpg data set example}
+This example demonstrates the following concepts:
+
+\begin{description}
+\item[Global variables]: The \texttt{mpgData} variable is declared outside the \texttt{shinyServer} function. This makes it available anywhere inside \texttt{shinyServer}. The code in \texttt{server.R} outside \texttt{shinyServer} is only run once when the app starts up, so it can't contain user input.
+
+\item[Reactive expressions]: \texttt{formulaText} is a reactive expression. Note how it re-evaluates when the Variable field is changed, but not when the \textit{Show Outliers} box is ticked.
+\end{description}
+%-------------------------------------------------------------%
+\subsection{\texttt{EX05} - sliders example}
+\begin{itemize}
+\item This example demonstrates Shiny's versatile \texttt{sliderInput} widget.
+
+\item 
+Slider inputs can be used to select single values, to select a continuous range of values, and even to animate over a range.
+\end{itemize}
+%-------------------------------------------------------------%
+\subsection{\texttt{EX06} - tabsets example}
+
+This example demonstrates the \texttt{tabsetPanel} and \texttt{tabPanel} widgets.
+
+Notice that outputs that are not visible are not re-evaluated until they become visible. Try this:
+
+\begin{enumerate}
+\item Scroll to the bottom of \texttt{server.R}
+\item Change the number of observations, and observe that only \texttt{output\$plot} is evaluated.
+\item Click the \textit{Summary} tab, and observe that \texttt{output\$summary} is evaluated.
+\item Change the number of observations again, and observe that now only \texttt{output\$summary} is evaluated.
+\end{enumerate}
+
+
+\subsection{EX07 - Widgets Example}
+
+This example demonstrates some additional widgets included in Shiny, such as \texttt{helpText} and \texttt{submitButton}. The latter is used to delay rendering output until the user explicitly requests it.
+
+\subsection{EX08 - HTML (short discussion only)}
+
+\begin{itemize}
+\item Normally we use the built-in functions, such as \texttt{textInput()}, to generate the HTML UI in the R script \texttt{ui.R}. 
+\item Actually shiny also works with a custom HTML page www/index.html. See the tutorial for more details.
+\end{itemize}
+
+
+%------------------------------------------------------------%
+\subsection{EX19-MathJax}
+MathJax is an open source JavaScript display engine for mathematics that works in all browsers. MathJax downloads with web page content, scans the page content for equation markup, and typesets the math. Thus, MathJax requires no installation of software or extra fonts on the reader's system. 
+
+
+This allows MathJax to run in any browser with JavaScript support, including mobile devices.
+
+\begin{itemize}
+\item The function  \texttt{withMathJax()}  is a wrapper function to load the \textbf{MathJax }library in a shiny app. 
+\item For static HTML content, we only need to call  \texttt{withMathJax()}  once. 
+\item 
+However, for dynamic UI output via  \texttt{renderUI() }, we must wrap the content that 
+contains math expressions in \texttt{ withMathJax()} , because we have to call the MathJax 
+function  \texttt{MathJax.Hub.Typeset() } to render math manually, which is what  \texttt{withMathJax() }
+does.
+\end{itemize}
+
+\end{document}
